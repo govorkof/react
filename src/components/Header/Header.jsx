@@ -6,6 +6,10 @@ const Header = (props) => {
     return <header className={s.header}>
         <img src="https://a.deviantart.net/avatars/j/a/jack070.png?7" className={s.logo}></img>
 
+
+
+
+
         <div className={s.loginBlock} >
             {props.isAuth ?
                 props.login
