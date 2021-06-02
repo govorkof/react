@@ -1,0 +1,25 @@
+.header {
+    grid-area: h;
+    background-color: rgb(190, 253, 190);
+    }
+
+.logo {
+    margin-left: 50px;
+    margin-top: 5px;
+animation-name: rotation;
+animation-duration: 40s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+}
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loginBlock {
+    float: right;
+}
