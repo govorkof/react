@@ -1,5 +1,4 @@
 import React from 'react'
-import s from './ProfileInfo.module.css'
 
 
 class ProfileStatus extends React.Component {
@@ -32,7 +31,6 @@ class ProfileStatus extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {          //метод работает, когда компонента перерисовывется
-        debugger
         if (prevProps.status !== this.props.status) {
             this.setState({
                 status: this.props.status
