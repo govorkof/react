@@ -2,13 +2,21 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
+import { required, maxLengthCreator } from '../../../utils/validators/validators'
+import { Textarea } from '../../common/FormsControls/FormsControls'
 
+const maxLength10 = maxLengthCreator(10)    //для валидации! Внимательно смотреть примеры из FAQ REDUX-FORM. Если сразу вставлять вызов функции в validate то  
+//------------------------------------------//будет ошибка бесконечного вызова setData
 
 function AddNewPostForm(props) {
     return (
         <form onSubmit={props.handleSubmit} >
             <div>
-                <Field component='textarea' name='newPostText' placeholder='Enter post text' />
+                <Field component={Textarea}  //когда компонента используется не стандартная, а какая либо созданная своя,
+                    //-----------------------// то указывается в {}, а не в ковычках
+                    name='newPostText'
+                    placeholder='Enter post text'
+                    validate={[required, maxLength10]} />
             </div>
             <div>
                 <button>Add post</button>
