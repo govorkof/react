@@ -12,7 +12,7 @@ import Preloader from '../common/Preloader/Preloader';
 import { usersAPI } from '../../api/api';
 import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getPageSize, getTotalUsersCount, getUsers, getCurrentPage, getIsFetching, getFolowingInProgress  } from '../../redux/users-selectors';
+import { getPageSize, getTotalUsersCount, getUsers, getCurrentPage, getIsFetching, getFolowingInProgress} from '../../redux/users-selectors';
 
 
 
