@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 import { required, maxLengthCreator } from '../../../utils/validators/validators'
 import { Textarea } from '../../common/FormsControls/FormsControls'
+import { PureComponent } from 'react'
 
 const maxLength10 = maxLengthCreator(10)    //для валидации! Внимательно смотреть примеры из FAQ REDUX-FORM. Если сразу вставлять вызов функции в validate то  
 //------------------------------------------//будет ошибка бесконечного вызова setData
@@ -27,8 +28,9 @@ function AddNewPostForm(props) {
 
 AddNewPostForm = reduxForm({ form: 'ProfileAddNewPstForm' })(AddNewPostForm)
 
-const MyPosts = (props) => {
-    console.log(props)
+const MyPosts = props => {
+
+    console.log('render')
 
     let postsElements = props.posts.map(p => <Post
         message={p.message}
@@ -55,6 +57,7 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
+
 }
 
 
