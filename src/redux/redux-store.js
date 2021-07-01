@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import profileReducer from "../redux/profile-reducer";
 import dialogReducer from "../redux/dialog-reducer";
 import sidebarReducer from "../redux/sidebar-reducer"
@@ -18,8 +18,12 @@ let reducers = combineReducers({       //*REDUX смешивает наши тр
     app: appReducer,
 })
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));     //*REDUX  отдаем закомбайненые редюсеры в store
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-window.store = store;
+
+// let store = createStore(reducers, applyMiddleware(thunkMiddleware));     //*REDUX  отдаем закомбайненые редюсеры в store
+
+window.__store__ = store;
 
 export default store                   //зозвращаем измененный стор тому кто вызвал
