@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, withRouter, BrowserRouter } from 'react-router-dom'
 import { Component } from 'react';
 import { connect, Provider } from 'react-redux';
@@ -8,12 +8,15 @@ import { initializeApp } from './redux/app-reducer';
 import store from './redux/redux-store';
 import Preloader from './components/common/Preloader/Preloader';
 import Navbar from './components/Navbar/Navbar'
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+// import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
+// import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 
 class App extends Component {
@@ -32,10 +35,16 @@ class App extends Component {
       <div className='app-wrapper-content'>
 
         <Route exact path='/dialogs'
-          render={() => <DialogsContainer />} />
+          render={() =>
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <DialogsContainer />
+            </Suspense>} />
 
         <Route path='/profile/:userId?'
-          render={() => <ProfileContainer />} />
+          render={() =>
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <ProfileContainer />
+            </Suspense>} />
 
         <Route path='/users'
           render={() => <UsersContainer />} />

@@ -27,6 +27,13 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', { followed: true })
             }
+            
+            // return {
+            //     ...state,
+            //     users: updateObjectInArray(state.users, action.userId, 'id', { followed: true })
+            // }
+
+
         case UNFOLLOW:
             return {
                 ...state,
